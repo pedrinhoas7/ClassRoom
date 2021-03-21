@@ -49,6 +49,11 @@ Route::post('/register/professor', [RegisterProfessorController::class, 'registe
 /* LOGIN */
 Route::get('/auth/professor/register',[ProfessorController::class, 'register'])->name('auth/professor/register');
 
+/* INTERNO */
+Route::get('/PROFESSOR', function () {
+    return view('professor.dashboard');
+});
+
 /* ROTAS LIVRO */
 Route::post('/livro', [LivroController::class, 'store'] );
 
