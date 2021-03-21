@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\aluno;
 
 use App\Http\Controllers\Controller;
+use App\Models\Aluno;
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
@@ -14,41 +15,48 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'ola'
+        ]);
+    }
+
+    public function login()
+    {
+        return view('auth.aluno.login');
+    }
+
+    public function loginSubmit(Request $request)
+    {
+        $aluno = Aluno::where('email',$request->email,'password',$request->password)->get();
+        return $aluno;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function register()
     {
-        //
+        return view('auth.aluno.register');
     }
-
+    
     /**
-     * Store a newly created resource in storage.
+     * Get a validator for an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function store(Request $request)
+    protected function validator(array $data)
     {
-        //
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *

@@ -16,11 +16,11 @@ class CreateProfessorsTable extends Migration
         Schema::create('professors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('cpf');
+            $table->string('cpf')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('status', ['TRUE', 'FALSE']);
+            $table->enum('permissao', ['PROFESSOR', 'ADMINISTRADOR', 'ALUNO']);
             $table->rememberToken();
             $table->timestamps();
         });

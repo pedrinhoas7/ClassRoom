@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\lista-presenca;
+namespace App\Http\Controllers\listaPresenca;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
