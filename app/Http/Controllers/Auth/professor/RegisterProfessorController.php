@@ -65,7 +65,7 @@ class RegisterProfessorController extends Controller
      */
     protected function create(array $data)
     {
-        $permissao = "PROFESSOR";
+        $permissao = "ADMINISTRADOR";
         $professor = Professor::create([
             'name' => $data['name'],
             'email' => $data['email'],

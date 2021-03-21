@@ -22,6 +22,7 @@ class Professor extends Authenticatable
         'password',
         'cpf',
         'status',
+        'permissao'
     ];
 
     /**

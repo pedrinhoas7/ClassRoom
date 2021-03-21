@@ -21,7 +21,8 @@ class Aluno extends Authenticatable
         'password',
         'cpf',
         'escolaridade',
-        'status'
+        'status',
+        'permissao'
     ];
 
     /**
