@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\aluno;
 
 use App\Http\Controllers\Controller;
-use App\Models\Aluno;
+use App\Models\aluno\Aluno;
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
@@ -27,8 +27,7 @@ class AlunoController extends Controller
 
     public function loginSubmit(Request $request)
     {
-        $aluno = Aluno::where('email',$request->email,'password',$request->password)->get();
-        return $aluno;
+        $aluno = Aluno::all();
     }
 
     /**
@@ -41,20 +40,7 @@ class AlunoController extends Controller
         return view('auth.aluno.register');
     }
     
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+  
 
     
     /**

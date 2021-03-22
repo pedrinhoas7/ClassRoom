@@ -30,7 +30,7 @@ class RegisterProfessorController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::PROFESSOR;
 
     /**
      * Create a new controller instance.
@@ -65,7 +65,7 @@ class RegisterProfessorController extends Controller
      */
     protected function create(array $data)
     {
-        $permissao = "ADMINISTRADOR";
+        $permissao = "PROFESSOR";
         $professor = Professor::create([
             'name' => $data['name'],
             'email' => $data['email'],

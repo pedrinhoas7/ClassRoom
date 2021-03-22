@@ -12,6 +12,9 @@ use App\Http\Controllers\pagamento\PagamentoController;
 use App\Http\Controllers\Auth\aluno\RegisterController as RegisterAlunoController;
 use App\Http\Controllers\Auth\professor\RegisterProfessorController;
 use App\Http\Controllers\Auth\aluno\LoginController as LoginAlunoController;
+use App\Http\Controllers\Controller;
+use App\Models\professor\Professor;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,9 +26,7 @@ use App\Http\Controllers\Auth\aluno\LoginController as LoginAlunoController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', [Controller::class, 'welcome']);
 
 /* ROTAS ALUNO */
 
@@ -34,11 +35,11 @@ Route::post('/register/aluno', [RegisterAlunoController::class, 'register'] )->n
 
 /* LOGIN */
 Route::get('/auth/aluno/register',[AlunoController::class, 'register'])->name('auth/aluno/register');
-
+Route::get('/auth/aluno', [AlunoController::class, 'login'])->name('auth/aluno');
 /* INTERNO */
-Route::get('/ALUNO', function () {
+Route::get('/aluno', function () {
     return view('aluno.dashboard');
-});
+})->middleware('auth.aluno');
 
 
 /* ROTAS PROFESSOR */
@@ -48,11 +49,12 @@ Route::post('/register/professor', [RegisterProfessorController::class, 'registe
 
 /* LOGIN */
 Route::get('/auth/professor/register',[ProfessorController::class, 'register'])->name('auth/professor/register');
+Route::get('/auth/professor', [ProfessorController::class, 'login'])->name('auth/professor');
 
 /* INTERNO */
-Route::get('/PROFESSOR', function () {
+Route::get('/professor', function () {
     return view('professor.dashboard');
-});
+})->middleware('auth.professor');
 
 /* ROTAS LIVRO */
 Route::post('/livro', [LivroController::class, 'store'] );

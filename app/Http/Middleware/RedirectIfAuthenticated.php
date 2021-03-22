@@ -23,7 +23,16 @@ class RedirectIfAuthenticated
         $user = Auth::user();
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect($user['permissao']);
+                if($user->permissao == 'ALUNO'){
+                    return redirect(RouteServiceProvider::ALUNO);
+                }
+                if($user->permissao == 'PROFESSOR'){
+                    return redirect(RouteServiceProvider::PROFESSOR);
+                }
+                if($user->permissao == 'ADMINISTRADOR'){
+                    return redirect(RouteServiceProvider::ADMINISTRADOR);
+                }
+                
             }
         }
         
