@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Transformes\MateriaTransformer;
 use App\Models\materia\Materia;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -13,7 +14,8 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function welcome(){
-        $materias = Materia::all();
+        $materias = Materia::all()
+        ;
         return view('welcome', ['materias' => $materias]);
     }
 };

@@ -1,11 +1,12 @@
 <?php
-namespace App\Http\Controllers\Transformes;
+
+namespace App\Http\Controllers\materia\Transformes;
 
 use App\Models\materia\Materia;
 use Illuminate\Database\Eloquent\Model;
-use League\Fractal;
+use League\Fractal\TransformerAbstract;
 
-class BookTransformer extends TransformerAbstract
+class MateriaTransformer extends TransformerAbstract
 {
 	 /**
      * @param Materias $materias
