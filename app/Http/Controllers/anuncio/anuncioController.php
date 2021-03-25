@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\materia;
+namespace App\Http\Controllers\anuncio;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\materia\Materia;
 
-class MateriaController extends Controller
+class anuncioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class MateriaController extends Controller
      */
     public function index()
     {
-
+        //
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -28,8 +26,6 @@ class MateriaController extends Controller
     {
         //
     }
-
-
 
     /**
      * Store a newly created resource in storage.

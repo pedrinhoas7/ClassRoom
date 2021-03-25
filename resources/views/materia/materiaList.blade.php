@@ -9,8 +9,9 @@
   </thead>
   <tbody>
     <tr>
+
     @foreach ($materias as $materia)
-    <th scope="row">{{$materia->id}}</th>
+    <th scope="row">{{$materia->id }}</th>
       <td>{{$materia->name}}</td>
       <td>{{$materia->descricao}}</td>
       <td>{{$materia->carga_horaria}} Horas</td>

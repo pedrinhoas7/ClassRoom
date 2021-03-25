@@ -27,6 +27,7 @@ use App\Models\professor\Professor;
 */
 
 Route::get('/', [Controller::class, 'welcome']);
+Route::get('/login', [Controller::class, 'welcome']);
 
 /* ROTAS ALUNO */
 
