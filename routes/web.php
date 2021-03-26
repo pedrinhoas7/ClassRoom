@@ -46,6 +46,7 @@ Route::get('/aluno', function () {
 /* ROTAS PROFESSOR */
 
 /* CADASTRA PROFESSOR */
+
 Route::post('/register/professor', [RegisterProfessorController::class, 'register'] )->name('register/professor');
 
 /* LOGIN */
@@ -53,9 +54,7 @@ Route::get('/auth/professor/register',[ProfessorController::class, 'register'])-
 Route::get('/auth/professor', [ProfessorController::class, 'login'])->name('auth/professor');
 
 /* INTERNO */
-Route::get('/professor', function () {
-    return view('professor.dashboard');
-})->middleware('auth.professor');
+Route::get('/professor', [ProfessorController::class, 'index'])->middleware('auth.professor');
 
 /* ROTAS LIVRO */
 Route::post('/livro', [LivroController::class, 'store'] );

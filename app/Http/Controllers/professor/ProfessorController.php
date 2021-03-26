@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\professor;
 
 use App\Http\Controllers\Controller;
+use App\Models\materia\Materia;
 use Illuminate\Http\Request;
+use App\Models\professor\Professor as Professor;
+use App\Models\professor\Rank;
+use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class ProfessorController extends Controller
 {
@@ -14,9 +19,25 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'ola'
-        ]);
+        try{
+        $user = Auth::user();
+        $materias = Materia::where('professor_id' , $user->id )->get();
+        $ranks = Rank::where('professor_id' , $user->id )->first();
+        if($ranks->score <= 20){
+            $ranks['name'] = "INICIANTE";
+            $ranks['badge'] = 'red';
+            $ranks['next'] = 21;
+        }
+        if($ranks->score >= 20 && $ranks->score < 50){
+            $rank['name'] = 'DESAFIANTE';
+            $ranks['badge'] = 'blue';
+        }
+
+            return view('professor.dashboard',['materias' => $materias, 'ranks' => $ranks,  ]);
+        }catch(Exception $e){
+            return $e;
+        }
+        
     }
 
     public function login()
@@ -26,7 +47,7 @@ class ProfessorController extends Controller
 
     public function loginSubmit(Request $request)
     {
-        $professor = Professor::where('email',$request->email,'password',$request->password)->get();
+        $professor = Professor::all();
         return $professor;
     }
 
@@ -40,20 +61,7 @@ class ProfessorController extends Controller
         return view('auth.professor.register');
     }
     
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+   
 
     
     /**

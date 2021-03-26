@@ -4,7 +4,6 @@
       <th scope="col">#</th>
       <th scope="col">Nome</th>
       <th scope="col">Email</th>
-      <th scope="col">Password</th>
     </tr>
   </thead>
   <tbody>

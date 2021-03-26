@@ -24,6 +24,38 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .notification {
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
+  display: inline-block;
+}
+
+.notification:hover {
+  background: white;
+}
+
+.notification .red {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+.notification .blue {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: blue;
+  color: white;
+}
+    </style>
 </head>
 <body>
     <div id="app">
@@ -57,13 +89,17 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
                         @else
+                        LEVEL: 
+                        <a href="#" class="notification">
+                        <span class="{{$ranks->badge}}">{{$ranks->score}}</span>
+                        </a>
                             <li class="nav-item dropdown">
+                                
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
+                                        
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
