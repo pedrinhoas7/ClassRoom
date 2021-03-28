@@ -5,6 +5,7 @@ namespace App\Http\Controllers\materia;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\materia\Materia;
+use App\Models\professor\Rank;
 
 class MateriaController extends Controller
 {
@@ -15,7 +16,9 @@ class MateriaController extends Controller
      */
     public function index()
     {
+        $materias = Materia::all();
 
+        return view('professor.adicionarMaterias', ['materias' => $materias]);
     }
 
 

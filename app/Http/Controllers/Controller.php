@@ -6,6 +6,7 @@ use App\Http\Controllers\Transformes\MateriaTransformer;
 use App\Models\anuncio\Anuncio;
 use App\Models\materia\Materia;
 use App\Models\professor\Professor;
+use App\Models\professor\Rank;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -20,8 +21,14 @@ class Controller extends BaseController
         $materias = Materia::all();
         $professores = Professor::all();
         $anuncios = Anuncio::all();
+        $count = 0;
+        foreach($professores as $professor){
+            $score[$count] = Rank::where('professor_id', $professor->id)->first();
+            $professor['score'] = $score[$count];
+            $count++;
+        }
         try {
-            return view('welcome', ['materias' => $materias, 'professores' => $professores, 'anuncios' =>  $anuncios ]);
+            return view('welcome', ['materias' => $materias, 'professores' => $professores, 'anuncios' =>  $anuncios, 'score' => $score ]);
         }catch(Exception $e){
             return $e;
         }

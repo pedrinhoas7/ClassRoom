@@ -26,9 +26,9 @@
   <div class="row">
     <div class="col-sm">
       <h5>Cursos</h5>
-      @include('materia.materiaList')
+      @include('materia.materiasCard')
       <h5>Professores</h5>
-      @include('professor.professorList') 
+      @include('professor.professorCard') 
     </div>
     <div class="col-sm">
       <h5>Anuncios</h5>

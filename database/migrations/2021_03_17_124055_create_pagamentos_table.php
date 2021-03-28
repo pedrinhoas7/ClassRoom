@@ -16,16 +16,12 @@ class CreatePagamentosTable extends Migration
         Schema::create('pagamentos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->unsignedBigInteger('aluno_id');
-            $table->foreign('aluno_id')->references('id')->on('alunos');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('professor_id');
             $table->foreign('professor_id')->references('id')->on('professors');
-            $table->unsignedBigInteger('livro_id');
-            $table->foreign('livro_id')->references('id')->on('livros');
-            $table->unsignedBigInteger('teste_id');
-            $table->foreign('teste_id')->references('id')->on('testes');
-            $table->unsignedBigInteger('video_id');
-            $table->foreign('video_id')->references('id')->on('videos');
+            $table->unsignedBigInteger('materia_id');
+            $table->foreign('materia_id')->references('id')->on('materias');
             $table->timestamps();
         });
     }

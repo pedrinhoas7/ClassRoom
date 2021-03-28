@@ -38,9 +38,7 @@ Route::post('/register/aluno', [RegisterAlunoController::class, 'register'] )->n
 Route::get('/auth/aluno/register',[AlunoController::class, 'register'])->name('auth/aluno/register');
 Route::get('/auth/aluno', [AlunoController::class, 'login'])->name('auth/aluno');
 /* INTERNO */
-Route::get('/aluno', function () {
-    return view('aluno.dashboard');
-})->middleware('auth.aluno');
+Route::get('/aluno', [AlunoController::class, 'index'])->middleware('auth.aluno');
 
 
 /* ROTAS PROFESSOR */
@@ -60,7 +58,8 @@ Route::get('/professor', [ProfessorController::class, 'index'])->middleware('aut
 Route::post('/livro', [LivroController::class, 'store'] );
 
 /* ROTAS MATERIA */
-Route::post('/materia', [MateriaController::class, 'store'] );
+Route::post('/materia/create', [MateriaController::class, 'store'] );
+Route::get('/materia', [MateriaController::class, 'index']);
 
 /* ROTAS LISTA DE PRESENÇA */
 Route::post('/lista-presenca', [ListaPresencaController::class, 'store'] );

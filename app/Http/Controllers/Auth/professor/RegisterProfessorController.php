@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth\professor;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\professor\Professor;
+use App\Models\professor\Rank;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -79,6 +80,12 @@ class RegisterProfessorController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        }
+        if($professor) {
+            $score = Rank::create([
+                'professor_id' => $professor->id,
+                'score' => 1
+            ]);
         }
         return $professor;
     }

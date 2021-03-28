@@ -1,22 +1,20 @@
-<table class="table table-striped">
+<table class="table table-striped" style="width: 50%;">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Materia</th>
-      <th scope="col">Valor</th>
       <th scope="col">Carga Horaria</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-
+    
     @foreach ($materias as $materia)
+    <tr>
     <th scope="row">{{$materia->id }}</th>
       <td>{{$materia->name}}</td>
-      <td>{{$materia->valor}}</td>
       <td>{{$materia->carga_horaria}} Horas</td>
+      </tr>
     @endforeach
-      
-    </tr>
+       
   </tbody>
 </table>

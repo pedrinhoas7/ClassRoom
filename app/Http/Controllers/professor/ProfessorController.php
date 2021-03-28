@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\professor;
 
 use App\Http\Controllers\Controller;
+use App\Models\aluno\Aluno;
 use App\Models\materia\Materia;
 use Illuminate\Http\Request;
 use App\Models\professor\Professor as Professor;
@@ -33,7 +34,7 @@ class ProfessorController extends Controller
             $ranks['badge'] = 'blue';
         }
 
-            return view('professor.dashboard',['materias' => $materias, 'ranks' => $ranks,  ]);
+            return view('professor.dashboard',['materias' => $materias, 'ranks' => $ranks  ]);
         }catch(Exception $e){
             return $e;
         }

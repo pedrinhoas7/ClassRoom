@@ -21,6 +21,6 @@ class Pagamento extends Model
         'teste_id',
         'video_id',
         'professor_id',
-        'aluno_id'
+        'user_id'
     ];
 }

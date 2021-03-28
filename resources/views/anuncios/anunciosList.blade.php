@@ -5,7 +5,7 @@
   <div class="card-body">
     <h5 class="card-title">{{$anuncio->nome}}</h5>
     <p class="card-text">{{$anuncio->descricao}}.</p>
-    <a href={{$anuncio->link}} class="btn btn-primary">Comprar</a>
+    <a href="{{$anuncio->link}}" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
 
