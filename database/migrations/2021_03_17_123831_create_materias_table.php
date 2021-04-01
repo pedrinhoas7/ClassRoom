@@ -21,6 +21,7 @@ class CreateMateriasTable extends Migration
             $table->string('descricao');
             $table->double('carga_horaria');
             $table->double('valor');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

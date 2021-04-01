@@ -1,25 +1,15 @@
 @extends('layouts.professor.app')
 <head>
 <style>
-  .materia {
-  width: 92%;
-  margin-left: 18px;
-}
   </style>
 </head>
 @section('content')
-
-<div class="materia">
-  <div class="row">
-  @include('professor.MenuLateral')
-    <div class="col-sm" >
-      <h5>materia</h5>
+@include('professor.MenuLateral')
+<div>
+      <h5>Minhas Materias</h5>
         @include('materia.materiaList')
-    </div>
-    <div class="col-sm">
-      <h5>Rank</h5>
-      @include('professor.rank')
-    </div>
-  </div>
+      </div>
+      @include('anuncios.anunciosList')
 </div>
+
 @endsection

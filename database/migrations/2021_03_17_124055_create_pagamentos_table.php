@@ -22,6 +22,7 @@ class CreatePagamentosTable extends Migration
             $table->foreign('professor_id')->references('id')->on('professors');
             $table->unsignedBigInteger('materia_id');
             $table->foreign('materia_id')->references('id')->on('materias');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

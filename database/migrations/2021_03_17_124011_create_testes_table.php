@@ -22,6 +22,7 @@ class CreateTestesTable extends Migration
             $table->foreign('materia_id')->references('id')->on('materias');
             $table->unsignedBigInteger('professor_id');
             $table->foreign('professor_id')->references('id')->on('professors');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

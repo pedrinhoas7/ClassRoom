@@ -15,7 +15,7 @@ class Materia extends Model
      * @var array
      */
     protected $fillable = [
-        'nome',
+        'name',
         'professor_id',
         'descricao',
         'carga_horaria',

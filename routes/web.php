@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\aluno\AlunoController;
-use App\Http\Controllers\professor\ProfessorController;
+use App\Http\Controllers\professor\ProfessorController; 
 use App\Http\Controllers\livro\LivroController;
 use App\Http\Controllers\materia\MateriaController;
 use App\Http\Controllers\teste\TesteController;
@@ -52,14 +52,14 @@ Route::get('/auth/professor/register',[ProfessorController::class, 'register'])-
 Route::get('/auth/professor', [ProfessorController::class, 'login'])->name('auth/professor');
 
 /* INTERNO */
-Route::get('/professor', [ProfessorController::class, 'index'])->middleware('auth.professor');
+Route::get('/professor', [ProfessorController::class, 'index'])->name('professor')->middleware('auth.professor');
 
 /* ROTAS LIVRO */
 Route::post('/livro', [LivroController::class, 'store'] );
 
 /* ROTAS MATERIA */
-Route::post('/materia/create', [MateriaController::class, 'store'] );
-Route::get('/materia', [MateriaController::class, 'index']);
+Route::post('/materia/create', [MateriaController::class, 'store'] )->name('materia/create');
+Route::get('/materias', [MateriaController::class, 'index'])->name('materias');
 
 /* ROTAS LISTA DE PRESENÇA */
 Route::post('/lista-presenca', [ListaPresencaController::class, 'store'] );

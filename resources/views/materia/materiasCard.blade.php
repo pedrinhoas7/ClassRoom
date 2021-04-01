@@ -1,8 +1,8 @@
-<div class="row">
+@if($materias)   
 @foreach ($materias as $materia)
-<div style="margin: 5px; width: 30%;">
-<div class="card">
-  <img class="card-img-top" src="..." alt="Card image cap">
+<div class="container-fluid"  >
+<div class="card" >
+<img src="/storage/geografia.jfif" class="css-class" alt="alt text">
   <div class="card-body">
     <p class="card-text">Materia: {{$materia->name}}.</p>
     <p class="card-text">Carga Horaria: {{$materia->carga_horaria}}.</p>
@@ -13,6 +13,7 @@
   </div>
 </div>
 </div>
-
-@endforeach
-</div>
+@endforeach  
+@else
+      <td>Nada Por Aqui</td>        
+@endif

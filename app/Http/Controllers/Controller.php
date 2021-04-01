@@ -8,29 +8,31 @@ use App\Models\materia\Materia;
 use App\Models\professor\Professor;
 use App\Models\professor\Rank;
 use Exception;
+use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function welcome(){
-        $materias = Materia::all();
+        $user = Auth::user();
+        $materias = Materia::paginate(5);
         $professores = Professor::all();
         $anuncios = Anuncio::all();
+        $active = "active";
         $count = 0;
         foreach($professores as $professor){
             $score[$count] = Rank::where('professor_id', $professor->id)->first();
             $professor['score'] = $score[$count];
             $count++;
         }
-        try {
-            return view('welcome', ['materias' => $materias, 'professores' => $professores, 'anuncios' =>  $anuncios, 'score' => $score ]);
-        }catch(Exception $e){
-            return $e;
-        }
+            return view('welcome', ['materias' => $materias, 'professores' => $professores, 'anuncios' =>  $anuncios, 'score' => $score, 'active' => $active ]);
+      
     }
 };

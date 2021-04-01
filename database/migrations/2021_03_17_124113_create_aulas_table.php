@@ -26,6 +26,7 @@ class CreateAulasTable extends Migration
             $table->foreign('materia_id')->references('id')->on('materias');
             $table->unsignedBigInteger('lista_presenca_id');
             $table->foreign('lista_presenca_id')->references('id')->on('lista_presencas');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

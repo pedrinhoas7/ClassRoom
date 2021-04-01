@@ -18,6 +18,7 @@ class CreateRanksTable extends Migration
             $table->unsignedBigInteger('professor_id');
             $table->foreign('professor_id')->references('id')->on('professors');
             $table->integer('score')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

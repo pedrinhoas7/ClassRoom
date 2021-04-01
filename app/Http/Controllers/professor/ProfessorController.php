@@ -4,6 +4,7 @@ namespace App\Http\Controllers\professor;
 
 use App\Http\Controllers\Controller;
 use App\Models\aluno\Aluno;
+use App\Models\anuncio\Anuncio;
 use App\Models\materia\Materia;
 use Illuminate\Http\Request;
 use App\Models\professor\Professor as Professor;
@@ -22,8 +23,10 @@ class ProfessorController extends Controller
     {
         try{
         $user = Auth::user();
-        $materias = Materia::where('professor_id' , $user->id )->get();
-        $ranks = Rank::where('professor_id' , $user->id )->first();
+        $professor = Professor::where('email', $user->email)->first();
+        $materias = Materia::where('professor_id' , $professor->id )->paginate(10);
+        $ranks = Rank::where('professor_id' , $professor->id )->first();
+        $anuncios = Anuncio::paginate(3);
         if($ranks->score <= 20){
             $ranks['name'] = "INICIANTE";
             $ranks['badge'] = 'red';
@@ -34,7 +37,7 @@ class ProfessorController extends Controller
             $ranks['badge'] = 'blue';
         }
 
-            return view('professor.dashboard',['materias' => $materias, 'ranks' => $ranks  ]);
+            return view('professor.dashboard',['materias' => $materias, 'ranks' => $ranks , 'anuncios' => $anuncios ]);
         }catch(Exception $e){
             return $e;
         }

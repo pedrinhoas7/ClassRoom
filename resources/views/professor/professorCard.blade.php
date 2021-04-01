@@ -1,11 +1,13 @@
-<div class="row">
+<div class="container-fluid">
+@if($professores)   
 @foreach ($professores as $professor)
-<div style="margin: 5px; width: 30%;">
-<div class="card">
-  <img class="card-img-top" src="..." alt="Card image cap">
+<div class="row">
+<div >
+<div class="card" style="width: 300px;">
+<img src="/storage/geografia.jfif" class="css-class" alt="alt text">
   <div class="card-body">
     <p class="card-text">Materia: {{$professor->name}}.</p>
-    <p class="card-text">Rank: {{$professor->score}}</p>
+    <p class="card-text">Rank: {{$professor->name}}</p>
     <i class="fas fa-cloud"></i>
 
     <a href="#" class="btn btn-primary">Link</a>
@@ -13,6 +15,9 @@
   </div>
 </div>
 </div>
-
+</div>
 @endforeach
+@else
+      <td>Nada Por Aqui</td>        
+@endif
 </div>

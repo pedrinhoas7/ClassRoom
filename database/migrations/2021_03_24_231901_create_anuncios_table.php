@@ -19,6 +19,7 @@ class CreateAnunciosTable extends Migration
             $table->string('link');
             $table->string('descricao');
             $table->string('valor');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -19,7 +19,8 @@ class CreateListaPresencasTable extends Migration
             $table->unsignedBigInteger('aluno_id');
             $table->foreign('aluno_id')->references('id')->on('alunos');
             $table->unsignedBigInteger('professor_id');
-            $table->foreign('professor_id')->references('id')->on('professors');         
+            $table->foreign('professor_id')->references('id')->on('professors');
+            $table->softDeletes();        
             $table->timestamps();
         });
     }

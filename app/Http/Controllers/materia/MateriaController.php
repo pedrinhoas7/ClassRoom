@@ -5,10 +5,14 @@ namespace App\Http\Controllers\materia;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\materia\Materia;
+use App\Models\professor\Professor;
 use App\Models\professor\Rank;
+use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class MateriaController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,9 +20,15 @@ class MateriaController extends Controller
      */
     public function index()
     {
-        $materias = Materia::all();
-
-        return view('professor.adicionarMaterias', ['materias' => $materias]);
+        try {
+            $materias = Materia::paginate(10);
+            $user = Auth::user();
+            $professor = Professor::where('email', $user->email)->first();
+            $score = Rank::where('professor_id', $professor->id)->first();
+            return view('materia.adicionarMateriasProfessor', ['materias' => $materias, 'ranks' => $score]);
+        }catch(Exception $e){
+            return $e;
+        }
     }
 
 
@@ -42,7 +52,24 @@ class MateriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            
+            $user = Auth::user();
+            $professor = Professor::where('email', $user->email)->first();
+            $materias = Materia::where('professor_id', $professor->id)->get ();
+            $score = Rank::where('professor_id', $professor->id)->first();
+            $materia = Materia::create([
+            'name' => $request->name,
+            'professor_id' => $professor->id,
+            'descricao' => $request->descricao,
+            'carga_horaria' => $request->carga_horaria,
+            'valor' => $request->valor
+        ]);
+            
+            return redirect()->route('materias');
+        }catch(Exception $e){
+            return $e;
+        }
     }
 
     /**
