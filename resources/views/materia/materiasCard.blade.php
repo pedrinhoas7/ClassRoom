@@ -1,7 +1,8 @@
-@if($materias)   
+<div class="container-fluid"> 
+<Table class="table table table-responsive" >
 @foreach ($materias as $materia)
-<div class="container-fluid"  >
-<div class="card" >
+<td>
+<div class="card"  style="width: 320px; height: 400px;">
 <img src="/storage/geografia.jfif" class="css-class" alt="alt text">
   <div class="card-body">
     <p class="card-text">Materia: {{$materia->name}}.</p>
@@ -13,7 +14,7 @@
   </div>
 </div>
 </div>
-@endforeach  
-@else
-      <td>Nada Por Aqui</td>        
-@endif
+</td>
+@endforeach 
+</Table> 
+</div>

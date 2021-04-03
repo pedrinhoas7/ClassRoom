@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container-fluid">
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     @foreach ($anuncios as $anuncio)
     <div class="carousel-item {{$anuncios[0] === $anuncio ? 'active' : ''}}">
-      <img  src="/storage/matematica.jfif" alt="First slide" style="width: 100%;">
+      <img  src="/storage/matematica.jfif" alt="First slide" >
       <div class="carousel-caption d-none d-md-block">
         <h5>{{$anuncio->nome}}</h5>
         <p>{{$anuncio->valor}}</p>

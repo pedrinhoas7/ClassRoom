@@ -1,9 +1,8 @@
 <div class="container-fluid">
-@if($professores)   
+<Table class="table table table-responsive" >   
 @foreach ($professores as $professor)
-<div class="row">
-<div >
-<div class="card" style="width: 300px;">
+<td>
+<div class="card" style="width: 320px; height: 400px;">
 <img src="/storage/geografia.jfif" class="css-class" alt="alt text">
   <div class="card-body">
     <p class="card-text">Materia: {{$professor->name}}.</p>
@@ -14,10 +13,7 @@
     <a href="#" class="btn btn-primary">Link</a>
   </div>
 </div>
-</div>
-</div>
-@endforeach
-@else
-      <td>Nada Por Aqui</td>        
-@endif
+</td>
+@endforeach 
+</Table> 
 </div>
